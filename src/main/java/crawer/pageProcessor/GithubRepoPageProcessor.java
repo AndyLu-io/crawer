@@ -4,6 +4,7 @@ import org.springframework.stereotype.Component;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.Spider;
+import us.codecraft.webmagic.pipeline.JsonFilePipeline;
 import us.codecraft.webmagic.processor.PageProcessor;
 
 import javax.annotation.PostConstruct;
@@ -32,9 +33,10 @@ public class GithubRepoPageProcessor implements PageProcessor {
     }
 
     @PostConstruct
-    public static void test(){
+    public static void pageRunTest(){
         Spider.create(new GithubRepoPageProcessor())
                 .addUrl("https://github.com/code4craft")
+                .addPipeline(new JsonFilePipeline("/Users/luxiaobo/Documents/spriderJsonFile"))
                 .thread(1)
                 .run();
     }
