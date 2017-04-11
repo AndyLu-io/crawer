@@ -1,13 +1,17 @@
 package crawer.pageProcessor;
 
+import org.springframework.stereotype.Component;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.processor.PageProcessor;
 
+import javax.annotation.PostConstruct;
+
 /**
  * Created by luxiaobo on 2017/4/11.
  */
+@Component
 public class GithubRepoPageProcessor implements PageProcessor {
     private Site site = Site.me().setRetryTimes(3).setSleepTime(100);
     @Override
@@ -27,7 +31,8 @@ public class GithubRepoPageProcessor implements PageProcessor {
         return site;
     }
 
-    public static void main(String[] args) {
+    @PostConstruct
+    public static void test(){
         Spider.create(new GithubRepoPageProcessor())
                 .addUrl("https://github.com/code4craft")
                 .thread(1)

@@ -1,4 +1,4 @@
-package util;
+package crawer.util;
 
 import org.apache.commons.lang3.StringUtils;
 import org.codehaus.jackson.map.ObjectMapper;
