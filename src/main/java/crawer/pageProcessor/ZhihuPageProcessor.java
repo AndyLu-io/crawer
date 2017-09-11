@@ -25,4 +25,5 @@ public class ZhihuPageProcessor implements PageProcessor {
                 .addUrl("https://github.com/search?l=Java&p=1&q=stars%3A%3E1&s=stars&type=Repositories")
                 .thread(3).run();
     }
+
 }
