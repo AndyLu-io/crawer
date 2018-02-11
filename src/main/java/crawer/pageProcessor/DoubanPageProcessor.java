@@ -7,7 +7,6 @@ import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.processor.PageProcessor;
-import us.codecraft.webmagic.selector.CssSelector;
 import us.codecraft.webmagic.selector.Html;
 
 /**
@@ -27,7 +26,7 @@ public class DoubanPageProcessor implements PageProcessor {
     public void process(Page page) {
         Html html = page.getHtml();
         Document document = html.getDocument();
-        document.select("");
+        document.select("scc");
     }
 
     @Override
