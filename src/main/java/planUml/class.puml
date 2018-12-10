@@ -1,0 +1,67 @@
+@startuml
+enum SkinColor {
+    BLACK
+    YELLOW
+    BROWN
+}
+interface Animal {
+    + move()
+}
+
+abstract Walk {
+    # footNum
+    # useFeet()
+}
+
+class Head {
+    - size
+    - thinking()
+}
+
+class Body {
+    - Skin bodySkin
+    - {field} storageCapacity(存储容量)
+    + {method} digestiveFood //消化食物
+}
+
+class Skin {
+    - SkinColor skinColor
+    + getSkinColor()
+}
+
+
+class Truncus {
+    - Head head
+    - Body body
+    + getHead()
+    + getBody()
+}
+
+class Cow {
+    - Truncus truncus
+    ~ {static} eatGreens()
+}
+
+class Farm {
+    - {static} makeMoneyCountPerDay
+    - List<Cow> cowList
+}
+
+Walk --|> Animal
+
+Cow --|> Walk
+
+Body --* Skin: contains
+
+Skin -o SkinColor : has a
+
+
+Truncus --* Head : contains
+Truncus --* Body : contains
+
+Cow --o Truncus : has a
+
+
+Farm "1" --o "many" Cow
+
+@enduml

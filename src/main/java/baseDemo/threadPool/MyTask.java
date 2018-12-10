@@ -1,6 +1,6 @@
-package Demo;
+package baseDemo.threadPool;
 
-public class MyTask implements Runnable{
+public class MyTask implements Runnable {
     private int taskNum;
 
     public MyTask(int taskNum) {
@@ -11,6 +11,7 @@ public class MyTask implements Runnable{
     public void run() {
         System.out.println("正在执行task "+taskNum);
         try {
+            System.out.println("我是任务：" + taskNum + "你好，我要开始干活了");
             Thread.currentThread().sleep(4000);
         } catch (InterruptedException e) {
             e.printStackTrace();

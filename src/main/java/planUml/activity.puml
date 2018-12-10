@@ -1,0 +1,30 @@
+@startuml
+|#63B8FF|西溪壹号楼下|
+start
+:hipac 毅行;
+:开始行程;
+if(是否前三名到齐队伍?) then(是)
+ :领取特权卡;
+ else(否)
+ endif
+
+ while(是否小组所有成员合\n作完成跳大绳10个？) is(否)
+  :跳大绳游戏;
+  endwhile(是)
+
+  fork
+  :男士坐公交;
+  fork again
+  :女士打车;
+  end fork
+  |#00CD66|西湖景区|
+  :烟霞洞公交站集合;
+  while(是否完成套圈圈游戏？) is (否)
+  :套圈圈游戏;
+  endwhile(是)
+  :包公交返回;
+  |文体中心|
+  :开会;
+  :结束行程;
+  stop
+@enduml

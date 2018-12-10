@@ -1,0 +1,35 @@
+@startuml
+control ItemController
+autonumber 10 10
+activate ItemController
+        activate ItemService #1E90FF
+        ItemController -> ItemService : queryItemPagination\n分页查询商品列表
+        alt 是门店
+         ItemService -> ItemService : queryShopItemPagination\n 门店获取商品列表
+         activate ItemService #00FFFF
+                     deactivate ItemService
+        else 是消费者
+         ItemService -> ItemService : queryCustomerItemPagination\n 消费者获取商品列表
+                    activate ItemService #00FFFF
+                    deactivate ItemService
+        end
+         deactivate ItemService
+
+            ... {省略调用商品中心 获取商品信息}...
+              == {构建商品价格信息} ==
+
+              ItemService -> 商品价格中心: 通过商品id列表 获取商品价格列表
+              activate ItemService
+                      activate 商品价格中心
+                          ItemService <-- 商品价格中心: 返回商品价格列表
+                      deactivate 商品价格中心
+                       loop 每页数量
+                                  ItemService -> ItemBuilder: 循环构建每个商品价格信息
+                                  activate ItemBuilder
+                                  ItemService <-- ItemBuilder: 返回构建好的商品模型列表
+                                  deactivate ItemBuilder
+                       end
+               deactivate ItemService
+                 ItemController <-- ItemService: 将分页信息与商品列表\n构建成展示模型返回
+                 deactivate ItemController
+@enduml

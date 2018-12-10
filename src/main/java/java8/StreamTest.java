@@ -1,7 +1,6 @@
 package java8;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
 
 /**
  * @Author : qingxiao
@@ -11,8 +10,10 @@ import java.util.List;
 public class StreamTest {
 
     public static void main(String[] args) {
-        List<Person> personList = new ArrayList<>();
-        for (int i =0; i < 5; i++) {
-        }
+        Arrays.asList(1, 2, 3, 45).stream()
+              .filter(i -> i % 2 == 0 || i % 3 == 0)
+              .map(i -> i * i)
+              .forEach(System.out::println);
+
     }
 }
