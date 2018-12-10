@@ -1,4 +1,4 @@
-package Demo;
+package baseDemo;
 
 import java.io.*;
 
@@ -22,7 +22,7 @@ public class ClassLoaderDemo extends ClassLoader {
         byte[] data = null;
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         try {
-            is = new FileInputStream(new File("Users.luxiaobo.githubProject.simpleCrawer.target.classes.Demo.ClassLoaderTest.class"));
+            is = new FileInputStream(new File("Users.luxiaobo.githubProject.simpleCrawer.target.classes.baseDemo.ClassLoaderTest.class"));
             int c = 0;
             while (-1 != (c = is.read())) {
                 baos.write(c);

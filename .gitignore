@@ -17,7 +17,7 @@ suggest
 # Package Files #
 *.jar
 *.war
-*.ear
+*.ear
 *.zip
 *.tar.gz
 *.rar
