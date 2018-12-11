@@ -9,6 +9,8 @@ import java.io.Serializable;
  */
 public class Prototype implements Cloneable, Serializable {
 
+    private static final long serialVersionUID = 4374586866325704188L;
+
     /**
      * 浅拷贝
      * @return
