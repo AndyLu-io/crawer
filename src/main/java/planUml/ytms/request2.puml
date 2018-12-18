@@ -1,0 +1,13 @@
+@startuml
+left to right direction
+actor 运营
+actor 开发
+
+开发 --> (Disconf配置)
+
+(Disconf配置) --> (配置活动映射)
+运营  --> (添加模板活动信息)
+运营  --> (修改模板活动信息)
+(添加模板活动信息) --> (选择商品)
+(修改模板活动信息) --> (选择商品)
+@enduml
