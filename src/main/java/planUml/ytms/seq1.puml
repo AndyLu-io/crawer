@@ -1,0 +1,24 @@
+@startuml
+participant PcItemListAPI
+participant ItemSearchAO
+participant Disconf
+participant DB
+participant TAClientStoreyScreenerService
+participant TAClientItemRealDoAO
+
+autonumber
+PcItemListAPI -> PcItemListAPI : serchRecommendTagItems\n查询首页商品列表
+PcItemListAPI -> ItemSearchAO : serchRecommendTagItems\n AO层查询逻辑
+ItemSearchAO -> Disconf : 获取活动配置
+Disconf --> ItemSearchAO : 返回活动配置信息
+ItemSearchAO -> DB : 获取活动楼层商品数据
+ItemSearchAO <-- DB : 返回楼层活动信息
+ItemSearchAO -> TAClientStoreyScreenerService:screenStoreyList\n过滤楼层列表
+TAClientStoreyScreenerService -> TAClientStoreyScreenerService:楼层规则过滤
+TAClientStoreyScreenerService -> ItemSearchAO : 返回过滤后楼层列表
+ItemSearchAO -> ItemSearchAO:获取商品列表
+ItemSearchAO -> TAClientItemRealDoAO:queryxxx\n查询楼层商品列表详情
+TAClientItemRealDoAO -> TAClientItemRealDoAO : 转换成对应专属VO对象
+TAClientItemRealDoAO ->  ItemSearchAO : ItemListTagVO
+ItemSearchAO --> PcItemListAPI: List<temListTagDO>\n返回商品列表信息
+@enduml

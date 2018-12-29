@@ -1,0 +1,80 @@
+@startuml
+package com.yt.mall.biz.domain.ta.entity {
+    class TAHomePageContent {
+        - Long id
+        - Long taPageId
+        - Long taStoreyId
+        - String content
+        - String storeyLimit
+        - String urlJson
+        - String clientType
+        - String creator
+        - String editor
+    }
+}
+
+package com.yt.mall.biz.domain.item.vo {
+class TAPageContentVO {
+    - String content
+}
+
+class TAPageConfigVO {
+    - String title
+    - String subTitle
+    - String pageUrl
+    - String moreInfo
+    - Long pageId
+}
+
+class TAItemListVO {
+    - Integer itemPicMaskCode
+    - Integer  temTagCode
+    -  Integer permitType
+  - String permitRemark;
+  - String simpleDesc;
+   -TAButton4ItemVO itemButtonVO;
+}
+
+class TAItemBaseInfoVO {
+     - Long   id;
+      - String   name;
+       - TAItemCommonFieldNameValueVO price;
+       - TAItemCommonFieldNameValueVO cuePrice;
+       - TAItemFieldNameValueVO       itemType;
+      - String    hotLevel;
+       - String    pic;
+}
+
+}
+
+package com.yt.mall.taclient.domain.ta.dto {
+
+    class TAPageContentDTO {
+        - String title;
+        - String subTitle;
+        - String pageUrl;
+        - String moreInfo;
+        - List<Item> itemList;
+    }
+}
+
+package com.yt.mall.taclient.ao.realdo {
+interface TAClientItemRealDoAO {
+    - List<ItemListInfoDTO>  queryItemInfoListByItemIds
+}
+}
+package com.yt.mall.biz.ao.realdo.ta.impl {
+    class TAClientItemRealDoAOImpl {
+ - List<ItemListInfoDTO>  queryItemInfoListByItemIds
+}
+}
+
+'enum TAStoreyComponentTypeEnum {
+' ITEM_LIST("ITEM_LIST", "商品列表", TAStoreyItemListDTO.class)
+'}
+
+TAPageContentVO --* TAPageConfigVO
+TAPageContentVO --* TAItemListVO
+TAItemListVO --|> TAItemBaseInfoVO
+TAClientItemRealDoAOImpl --|> TAClientItemRealDoAO
+@enduml
