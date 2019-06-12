@@ -15,5 +15,7 @@ public class App {
         System.out.println(coffee.cost() + ":" + coffee.desc());
         coffee  =new Suger(coffee);
         System.out.println(coffee.cost() + ":" + coffee.desc());
+        coffee = new Milk(coffee);
+        System.out.println(coffee.cost() + ":" + coffee.desc());
     }
 }
