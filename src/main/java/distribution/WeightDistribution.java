@@ -22,10 +22,6 @@ public class WeightDistribution {
      * 最大权重
      */
     private static int maxWeight;
-    /**
-     * 权重的最大公约数(这里可以默认为1)
-     */
-    private static int maxDivisorWeight = 1;
 
     /**
      * 对应需要分配的集合大小
@@ -73,10 +69,14 @@ public class WeightDistribution {
      * 分配相应元素 （即权重分配函数）
      * @param element
      */
-    public static void allocationElement(Object element) {
+    private static void allocationElement(Object element) {
         while(true){
             currentIndex = (currentIndex + 1) % collectCount;
             if(currentIndex == 0){
+                /**
+                 * 权重的最大公约数(这里可以默认为1)
+                 */
+                int maxDivisorWeight = 1;
                 currentWeight = currentWeight - maxDivisorWeight;
                 if(currentWeight <= 0){
                     currentWeight = maxWeight;
@@ -98,7 +98,7 @@ public class WeightDistribution {
      * @param collects
      * @return
      */
-    public static int greatestWeight(List<WeightCollect> collects){
+    private static int greatestWeight(List<WeightCollect> collects){
         int weight = 0;
         for(WeightCollect collect : collects){
             if(weight < collect.getWeight()){
@@ -123,26 +123,22 @@ public class WeightDistribution {
          */
         private int weight;
 
-        public WeightCollect(List<Object> objectList, int weight) {
+        WeightCollect(List<Object> objectList, int weight) {
             this.objectList = objectList;
             this.weight = weight;
         }
 
-        public List<Object> getObjectList() {
+        /**
+         * @return
+         */
+        List<Object> getObjectList() {
             return objectList;
         }
 
-        public void setObjectList(List<Object> objectList) {
-            this.objectList = objectList;
-        }
-
-        public int getWeight() {
+        int getWeight() {
             return weight;
         }
 
-        public void setWeight(int weight) {
-            this.weight = weight;
-        }
     }
 
 }

@@ -12,6 +12,7 @@ import java.util.concurrent.Future;
  * @date 2018-12-28  16:45
  */
 public class ExecutorServiceCalculator implements Calculator {
+
     private int             parallism;
     private ExecutorService pool;
 
@@ -20,10 +21,11 @@ public class ExecutorServiceCalculator implements Calculator {
         pool = Executors.newFixedThreadPool(parallism);
     }
 
-    private static class SumTask implements Callable<Long>  {
+    private static class SumTask implements Callable<Long> {
+
         private long[] numbers;
-        private int from;
-        private int to;
+        private int    from;
+        private int    to;
 
         public SumTask(long[] numbers, int from, int to) {
             this.numbers = numbers;
